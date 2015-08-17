@@ -1,0 +1,10 @@
+ARTIFACTS
+
+  1. A test page loading mocha and chai with a hello world test
+  2. A test for countNeighbors()
+
+20150817
+
+  Set up Mocha in the browser
+  (https://mochajs.org/#running-mocha-in-the-browser).  Reading a little about
+  how Mocha works.

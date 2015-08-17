@@ -9,16 +9,30 @@
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.2.5/mocha.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.2.0/chai.js"></script>
+  <script src="script.js"></script>
   <script>mocha.setup('bdd')</script>
 
   <script>
     assert = chai.assert;
 
+    describe("#createEmptyGrid", function() {
+      it("should create a 4x4 grid of false values", function() {
+        var grid = createEmptyGrid()
+        for (var x = 0; x < 4; x++) {
+          for (var y = 0; y < 4; y++) {
+            assert.equal(false, grid[x][y], "at position (" + x + "," + y + ")" );
+          }
+        }
+      });
+    });
+
+    /*
     describe("#countNeighbors()", function() {
       it("should count neighbors to the top-left", function() {
         assert.equal(1, 1, "1 should equal itself");
       });
     });
+    */
   </script>
 
   <script>
