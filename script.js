@@ -39,14 +39,54 @@ function countNeighbors(grid, x, y) {
     }
   }
 
-/*
   // top
   if (y > 0) {
     if (grid[x][y - 1]) {
       count++;
     }
   }
-  */
+
+  // top-right
+  if ((x < 4 - 1) && (y > 0)) {
+    if (grid[x + 1][y - 1]) {
+      count++;
+    }
+  }
+
+  // bottom-left
+  if ((x > 0) && (y < 4 - 1)) {
+    if (grid[x - 1][y + 1]) {
+      count++;
+    }
+  }
+
+  // bottom
+  if (y < 4 - 1) {
+    if (grid[x][y + 1]) {
+      count++;
+    }
+  }
+
+  // bottom-right
+  if ((x < 4 - 1) && (y < 4 - 1)) {
+    if (grid[x + 1][y + 1]) {
+      count++;
+    }
+  }
+
+  // left
+  if (x > 0) {
+    if (grid[x - 1][y]) {
+      count++;
+    }
+  }
+
+  // right
+  if (x < 4 - 1) {
+    if (grid[x + 1][y]) {
+      count++;
+    }
+  }
 
   return count;
 }

@@ -40,19 +40,86 @@
       });
     });
 
-    /*
     describe("#countNeighbors()", function() {
       var grid;
 
-      before(function() {
+      beforeEach(function() {
         grid = createEmptyGrid();
       });
 
       it("should count neighbors to the top-left", function() {
+        addToGrid(grid, [[0,0]]);
+        assert.equal(1, countNeighbors(grid, 1, 1));
+      });
+
+      it("should not count neighbors to the top-left from the top-left corner", function() {
         assert.equal(0, countNeighbors(grid, 0, 0));
       });
+
+      it("should count neighbors to the top", function() {
+        addToGrid(grid, [[1,0]]);
+        assert.equal(1, countNeighbors(grid, 1, 1));
+      });
+
+      it("should not count neighbors to the top from the top-center edge", function() {
+        assert.equal(0, countNeighbors(grid, 1, 0));
+      });
+
+      it("should count neighbors to the top-right", function() {
+        addToGrid(grid, [[1,0]]);
+        assert.equal(1, countNeighbors(grid, 0, 1));
+      });
+
+      it("should not count neighbors to the top-right from the top-right corner", function() {
+        assert.equal(0, countNeighbors(grid, 3, 0));
+      });
+
+
+      it("should count neighbors to the bottom-left", function() {
+        addToGrid(grid, [[0,1]]);
+        assert.equal(1, countNeighbors(grid, 1, 0));
+      });
+
+      it("should not count neighbors to the bottom-left from the bottom-left corner", function() {
+        assert.equal(0, countNeighbors(grid, 0, 3));
+      });
+
+      it("should count neighbors to the bottom", function() {
+        addToGrid(grid, [[1,1]]);
+        assert.equal(1, countNeighbors(grid, 1, 0));
+      });
+
+      it("should not count neighbors to the bottom from the bottom-center edge", function() {
+        assert.equal(0, countNeighbors(grid, 0, 3));
+      });
+
+      it("should count neighbors to the bottom-right", function() {
+        addToGrid(grid, [[1,1]]);
+        assert.equal(1, countNeighbors(grid, 0, 0));
+      });
+
+      it("should not count neighbors to the bottom-right from the bottom-right corner", function() {
+        assert.equal(0, countNeighbors(grid, 3, 3));
+      });
+
+      it("should count neighbors to the left", function() {
+        addToGrid(grid, [[0,0]]);
+        assert.equal(1, countNeighbors(grid, 1, 0));
+      });
+
+      it("should not count neighbors to the left from the left edge", function() {
+        assert.equal(0, countNeighbors(grid, 0, 0));
+      });
+
+      it("should count neighbors to the right", function() {
+        addToGrid(grid, [[1,0]]);
+        assert.equal(1, countNeighbors(grid, 0, 0));
+      });
+
+      it("should not count neighbors to the right from the right edge", function() {
+        assert.equal(0, countNeighbors(grid, 3, 0));
+      });
     });
-    */
   </script>
 
   <script>
