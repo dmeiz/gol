@@ -13,11 +13,11 @@ function addToGrid(grid, points) {
   });
 }
 
-function renderBoard(board) {
+function renderGrid(grid) {
   var s = "";
-  for (var i = 0; i < board.length; i++) {
-    for (var j = 0; j < board[i].length; j++) {
-      if (board[i][j]) {
+  for (var i = 0; i < grid.length; i++) {
+    for (var j = 0; j < grid[i].length; j++) {
+      if (grid[i][j]) {
         s += "X";
       }
       else {
@@ -26,7 +26,7 @@ function renderBoard(board) {
     }
     s += "\n";
   }
-  console.log(s);
+  return s;
 }
 
 function countNeighbors(grid, x, y) {

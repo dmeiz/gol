@@ -120,6 +120,14 @@
         assert.equal(0, countNeighbors(grid, 3, 0));
       });
     });
+
+    describe("#renderGrid()", function() {
+      it("should render the grid", function() {
+        var grid = createEmptyGrid();
+        addToGrid(grid, [[1,1]]);
+        assert.equal("....\n.X..\n....\n....\n", renderGrid(grid));
+      });
+    });
   </script>
 
   <script>
