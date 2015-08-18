@@ -26,10 +26,30 @@
       });
     });
 
+    describe("#addToGrid()", function() {
+      var grid;
+      before(function() {
+        grid = createEmptyGrid();
+      });
+
+      it("should add points to a grid", function() {
+        addToGrid(grid, [[0,0], [2,3]])
+
+        assert.equal(true, grid[0][0]);
+        assert.equal(true, grid[2][3]);
+      });
+    });
+
     /*
     describe("#countNeighbors()", function() {
+      var grid;
+
+      before(function() {
+        grid = createEmptyGrid();
+      });
+
       it("should count neighbors to the top-left", function() {
-        assert.equal(1, 1, "1 should equal itself");
+        assert.equal(0, countNeighbors(grid, 0, 0));
       });
     });
     */
