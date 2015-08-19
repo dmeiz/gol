@@ -91,27 +91,28 @@ function countNeighbors(grid, x, y) {
   return count;
 }
 
-/*
-function step(grid) {
-  var newBoard = 
-    [
-      [false, false, false, false],
-      [false, false, false, false],
-      [false, false, false, false],
-      [false, false, false, false]
-    ];
-
-  for (var i = 0; i < grid.length; i++) {
-    for (var j = 0; j < grid[i].length; j++) {
-      if (grid[i][j]) {
-        s += "X";
-      }
-      else {
-        s += ".";
-      }
+function nextCellState(current, numNeighbors) {
+  if (current) {
+    if (numNeighbors < 2) {
+      return false;
     }
-    s += "\n";
+    else if (numNeighbors < 4) {
+      return true;
+    }
+    else {
+      return false;
+    }
   }
-  
+  else {
+    if (numNeighbors === 3) {
+      return true;
+    }
+  }
+  return false;
 }
-*/
+
+function step(grid) {
+  // for each cell
+  // count neighbors
+  // compute cell value (currentState, numNeighbors)
+}

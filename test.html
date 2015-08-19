@@ -128,6 +128,43 @@
         assert.equal("....\n.X..\n....\n....\n", renderGrid(grid));
       });
     });
+
+    describe("#nextCellState()", function() {
+      it("should handle under-population", function() {
+        assert.equal(false, nextCellState(true, 0));
+        assert.equal(false, nextCellState(true, 1));
+      })
+
+      it("should handle survival", function() {
+        assert.equal(true, nextCellState(true, 2));
+        assert.equal(true, nextCellState(true, 3));
+      })
+
+      it("should handle over-population", function() {
+        assert.equal(false, nextCellState(true, 4));
+        assert.equal(false, nextCellState(true, 5));
+        assert.equal(false, nextCellState(true, 6));
+        assert.equal(false, nextCellState(true, 7));
+        assert.equal(false, nextCellState(true, 8));
+      })
+
+      it("should handle reproduction", function() {
+        assert.equal(true, nextCellState(false, 3));
+      })
+
+      it("should handle everything else", function() {
+        assert.equal(false, nextCellState(false, 0));
+        assert.equal(false, nextCellState(false, 1));
+        assert.equal(false, nextCellState(false, 2));
+        assert.equal(false, nextCellState(false, 4));
+        assert.equal(false, nextCellState(false, 5));
+        assert.equal(false, nextCellState(false, 6));
+        assert.equal(false, nextCellState(false, 7));
+        assert.equal(false, nextCellState(false, 8));
+      })
+
+
+    });
   </script>
 
   <script>
