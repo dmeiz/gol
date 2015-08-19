@@ -111,8 +111,16 @@ function nextCellState(current, numNeighbors) {
   return false;
 }
 
-function step(grid) {
+function nextGrid(grid) {
   // for each cell
   // count neighbors
   // compute cell value (currentState, numNeighbors)
+  var newGrid = createEmptyGrid();
+  for (var i = 0; i < grid.length; i++) {
+    for (var j = 0; j < grid[i].length; j++) {
+      newGrid[i][j] = nextCellState(grid[i][j], countNeighbors(grid, i, j));
+    }
+  }
+
+  return newGrid;
 }

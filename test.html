@@ -162,8 +162,15 @@
         assert.equal(false, nextCellState(false, 7));
         assert.equal(false, nextCellState(false, 8));
       })
+    });
 
-
+    describe("#nextGrid()", function() {
+      it("should compute the next grid state", function() {
+        var grid = createEmptyGrid();
+        addToGrid(grid, [[0,0], [1,0], [2,0]]);
+        var newGrid = nextGrid(grid);
+        assert.equal(true, newGrid[1][1]);
+      });
     });
   </script>
 
