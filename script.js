@@ -15,9 +15,9 @@ function addToGrid(grid, points) {
 
 function renderGrid(grid) {
   var s = "";
-  for (var i = 0; i < grid.length; i++) {
-    for (var j = 0; j < grid[i].length; j++) {
-      if (grid[i][j]) {
+  for (var y = 0; y < grid.length; y++) {
+    for (var x = 0; x < grid[y].length; x++) {
+      if (grid[x][y]) {
         s += "X";
       }
       else {

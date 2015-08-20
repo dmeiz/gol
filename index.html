@@ -4,8 +4,12 @@
     <script type="text/javascript" src="script.js"></script>
     <script type="text/javascript">
       var grid = createEmptyGrid()
-      addToGrid(grid, [[1,1], [2,2]]);
+      addToGrid(grid, [[1,1], [2,1], [3,1], [2,2]]);
       console.log(renderGrid(grid));
+      function step() {
+        grid = nextGrid(grid);
+        console.log(renderGrid(grid));
+      }
     </script>
   </body>
 </html>

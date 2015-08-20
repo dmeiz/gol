@@ -4,14 +4,18 @@ DEEP THINKING SESSIONS
   * 20150817 30min
   * 20150818 30min
   * 20150819 30min
+  * 20150820 30min
 
 ARTIFACTS
 
 X * A test page loading mocha and chai with a hello world test
 X * A test for createEmptyGrid()
 X * A test for countNeighbors()
-  * A step method
+X * A step method
 
+20150820
+
+  ,
 20150817
 
   Set up Mocha in the browser

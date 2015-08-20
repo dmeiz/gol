@@ -119,13 +119,18 @@
       it("should not count neighbors to the right from the right edge", function() {
         assert.equal(0, countNeighbors(grid, 3, 0));
       });
+
+      it("should work", function() {
+        addToGrid(grid, [[1,1], [2,1], [0,2], [1,3], [2,3]]);
+        assert.equal(5, countNeighbors(grid, 1, 2));
+      });
     });
 
     describe("#renderGrid()", function() {
       it("should render the grid", function() {
         var grid = createEmptyGrid();
-        addToGrid(grid, [[1,1]]);
-        assert.equal("....\n.X..\n....\n....\n", renderGrid(grid));
+        addToGrid(grid, [[1,0]]);
+        assert.equal(".X..\n....\n....\n....\n", renderGrid(grid));
       });
     });
 
