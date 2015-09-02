@@ -1,10 +1,14 @@
-function createEmptyGrid() {
-  return [
-    [false, false, false, false],
-    [false, false, false, false],
-    [false, false, false, false],
-    [false, false, false, false]
-  ];
+function createEmptyGrid(n, m) {
+  var grid = new Array(n);
+
+  for (var x = 0; x < n; x++) {
+    grid[x] = new Array(m);
+    for (var y = 0; y < m; y++) {
+      grid[x][y] = false;
+    }
+  }
+
+  return grid;
 }
 
 function addToGrid(grid, points) {
@@ -115,7 +119,7 @@ function nextGrid(grid) {
   // for each cell
   // count neighbors
   // compute cell value (currentState, numNeighbors)
-  var newGrid = createEmptyGrid();
+  var newGrid = createEmptyGrid(grid.length, grid[0].length);
   for (var i = 0; i < grid.length; i++) {
     for (var j = 0; j < grid[i].length; j++) {
       newGrid[i][j] = nextCellState(grid[i][j], countNeighbors(grid, i, j));
