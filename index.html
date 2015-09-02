@@ -3,8 +3,9 @@
   <body>
     <script type="text/javascript" src="script.js"></script>
     <script type="text/javascript">
-      var grid = createEmptyGrid(4, 4)
-      addToGrid(grid, [[1,1], [2,1], [3,1], [2,2]]);
+      var grid = createEmptyGrid(10, 10)
+      //addToGrid(grid, [[1,1], [2,1], [3,1], [2,2]]);
+      seedGrid(grid);
       console.log(renderGrid(grid));
       function step() {
         grid = nextGrid(grid);

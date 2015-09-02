@@ -11,6 +11,16 @@ function createEmptyGrid(n, m) {
   return grid;
 }
 
+function seedGrid(grid) {
+  for (var y = 0; y < grid.length; y++) {
+    for (var x = 0; x < grid[y].length; x++) {
+      if (Math.random() > 0.5) {
+        grid[x][y] = true;
+      }
+    }
+  }
+}
+
 function addToGrid(grid, points) {
   points.forEach(function(point) {
     grid[point[0]][point[1]] = true;

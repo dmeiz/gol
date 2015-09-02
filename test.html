@@ -26,6 +26,24 @@
       });
     });
 
+    describe("#seedGrid", function() {
+      it("should seed the grid randomly per a random factor", function() {
+        var grid = createEmptyGrid(4, 4);
+        seedGrid(grid);
+
+        var liveCount = 0;
+        for (var x = 0; x < 4; x++) {
+          for (var y = 0; y < 4; y++) {
+            if (grid[x][y]) {
+              liveCount++;
+            }
+          }
+        }
+
+        assert(liveCount > 0, "there are some live cells");
+      });
+    });
+
     describe("#addToGrid()", function() {
       var grid;
       before(function() {
