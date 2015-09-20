@@ -1,3 +1,14 @@
+Grid = function(m, n) {
+  this.cells = new Array(n);
+
+  for (var x = 0; x < n; x++) {
+    this.cells[x] = new Array(m);
+    for (var y = 0; y < m; y++) {
+      this.cells[x][y] = false;
+    }
+  }
+}
+
 function createEmptyGrid(n, m) {
   var grid = new Array(n);
 

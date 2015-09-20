@@ -15,16 +15,19 @@
   <script>
     assert = chai.assert;
 
-    describe("#createEmptyGrid", function() {
-      it("should create a nxm grid of false values", function() {
-        var grid = createEmptyGrid(4, 4)
-        for (var x = 0; x < 4; x++) {
-          for (var y = 0; y < 4; y++) {
-            assert.equal(false, grid[x][y], "at position (" + x + "," + y + ")" );
+    describe("Grid", function() {
+      describe("#new", function() {
+        it("should create a MxN grid of false values", function() {
+          var grid = new Grid(4, 4);
+          for (var x = 0; x < 4; x++) {
+            for (var y = 0; y < 4; y++) {
+              assert.equal(false, grid.cells[x][y], "at position (" + x + "," + y + ")" );
+            }
           }
-        }
+        });
       });
     });
+
 
     describe("#seedGrid", function() {
       it("should seed the grid randomly per a random factor", function() {
