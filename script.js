@@ -9,6 +9,18 @@ Grid = function(m, n) {
   }
 }
 
+Grid.prototype.seed = function() {
+  for (var y = 0; y < this.cells.length; y++) {
+    for (var x = 0; x < this.cells[y].length; x++) {
+      if (Math.random() > 0.5) {
+        this.cells[x][y] = true;
+      }
+    }
+  }
+}
+
+// procedural stuff //
+
 function createEmptyGrid(n, m) {
   var grid = new Array(n);
 
