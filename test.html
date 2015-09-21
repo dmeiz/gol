@@ -44,21 +44,20 @@
           assert(liveCount > 0, "there are some live cells");
         });
       });
-    });
 
+      describe("#addCells()", function() {
+        var grid;
 
+        before(function() {
+          grid = new Grid(4, 4)
+        });
 
-    describe("#addToGrid()", function() {
-      var grid;
-      before(function() {
-        grid = createEmptyGrid(4, 4);
-      });
+        it("should add cells to the grid", function() {
+          grid.addCells([[0,0], [2,3]])
 
-      it("should add points to a grid", function() {
-        addToGrid(grid, [[0,0], [2,3]])
-
-        assert.equal(true, grid[0][0]);
-        assert.equal(true, grid[2][3]);
+          assert.equal(true, grid.cells[0][0]);
+          assert.equal(true, grid.cells[2][3]);
+        });
       });
     });
 

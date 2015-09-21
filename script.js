@@ -19,6 +19,12 @@ Grid.prototype.seed = function() {
   }
 }
 
+Grid.prototype.addCells = function(cells) {
+  cells.forEach((function(cell) {
+    this.cells[cell[0]][cell[1]] = true;
+  }).bind(this)); // QUESTION: better way to do this?
+}
+
 // procedural stuff //
 
 function createEmptyGrid(n, m) {
