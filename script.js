@@ -20,9 +20,9 @@ Grid.prototype.seed = function() {
 }
 
 Grid.prototype.addCells = function(cells) {
-  cells.forEach((function(cell) {
+  cells.forEach(function addCell(cell) {
     this.cells[cell[0]][cell[1]] = true;
-  }).bind(this)); // QUESTION: better way to do this?
+  }, this);
 }
 
 // procedural stuff //
