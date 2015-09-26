@@ -28,7 +28,7 @@ Grid.prototype.addCells = function(cells) {
 Grid.prototype.eachCell = function(callback, thisArg) {
   for (var y = 0; y < this.cells.length; y++) {
     for (var x = 0; x < this.cells[y].length; x++) {
-      callback(x, y, this.cells[x][y], thisArg);
+      callback.call(thisArg, x, y, this.cells[x][y]);
     }
   }
 }

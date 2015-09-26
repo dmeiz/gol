@@ -49,16 +49,18 @@ describe("Grid", function() {
       grid.addCells([[1,0]])
 
       var callbacks = [];
+      var thisArg = new String("thisArg")
 
-      grid.eachCell(function(x, y, state, thisArg) {
-        callbacks.push([x, y, state, thisArg]);
-      }, "thisArg");
+      grid.eachCell(function(x, y, state) {
+        callbacks.push([x, y, state, this]);
+      }, thisArg);
 
+      //debugger;
       assert.equal(4, callbacks.length);
-      assert.deepEqual([0, 0, false, "thisArg"], callbacks[0]);
-      assert.deepEqual([1, 0, true, "thisArg"], callbacks[1]);
-      assert.deepEqual([0, 1, false, "thisArg"], callbacks[2]);
-      assert.deepEqual([1, 1, false, "thisArg"], callbacks[3]);
+      assert.deepEqual([0, 0, false, thisArg], callbacks[0]);
+      assert.deepEqual([1, 0, true, thisArg], callbacks[1]);
+      assert.deepEqual([0, 1, false, thisArg], callbacks[2]);
+      assert.deepEqual([1, 1, false, thisArg], callbacks[3]);
     });
   });
 });
