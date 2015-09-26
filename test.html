@@ -10,56 +10,13 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.2.5/mocha.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.2.0/chai.js"></script>
   <script src="script.js"></script>
+  <script src="grid.js"></script>
   <script>mocha.setup('bdd')</script>
+
+  <script src="grid_test.js"></script>
 
   <script>
     assert = chai.assert;
-
-    describe("Grid", function() {
-      describe("#new", function() {
-        it("should create a MxN grid of false values", function() {
-          var grid = new Grid(4, 4);
-          for (var x = 0; x < 4; x++) {
-            for (var y = 0; y < 4; y++) {
-              assert.equal(false, grid.cells[x][y], "at position (" + x + "," + y + ")" );
-            }
-          }
-        });
-      });
-
-      describe("#seedGrid", function() {
-        it("should seed the grid randomly per a random factor", function() {
-          var grid = new Grid(4, 4)
-          grid.seed();
-
-          var liveCount = 0;
-          for (var x = 0; x < 4; x++) {
-            for (var y = 0; y < 4; y++) {
-              if (grid.cells[x][y]) {
-                liveCount++;
-              }
-            }
-          }
-
-          assert(liveCount > 0, "there are some live cells");
-        });
-      });
-
-      describe("#addCells()", function() {
-        var grid;
-
-        before(function() {
-          grid = new Grid(4, 4)
-        });
-
-        it("should add cells to the grid", function() {
-          grid.addCells([[0,0], [2,3]])
-
-          assert.equal(true, grid.cells[0][0]);
-          assert.equal(true, grid.cells[2][3]);
-        });
-      });
-    });
 
     describe("#countNeighbors()", function() {
       var grid;
