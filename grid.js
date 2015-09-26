@@ -17,6 +17,23 @@ Grid.prototype.eachCell = function(callback, thisArg) {
   }
 }
 
+Grid.prototype.eachNeighbor = function(x, y, callback, thisArg) {
+  var deltas =
+    [[-1,-1], [0,-1], [1,-1],
+     [-1, 0],         [1, 0],
+     [-1, 1], [0, 1], [1, 1]];
+
+  deltas.forEach(function(delta) {
+    var neighborX = x + delta[0];
+    var neighborY = y + delta[1];
+
+    callback.call(thisArg, neighborX, neighborY, this.cells[neighborX][neighborY]);
+    /*
+    if (neighborX < 0 || this.cells[0].length >= neighborX) ||
+    */
+  }, this);
+}
+
 Grid.prototype.seed = function() {
   this.eachCell(function(x, y, state) {
     if (Math.random() > 0.5) {
