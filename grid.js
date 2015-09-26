@@ -27,10 +27,10 @@ Grid.prototype.eachNeighbor = function(x, y, callback, thisArg) {
     var neighborX = x + delta[0];
     var neighborY = y + delta[1];
 
-    callback.call(thisArg, neighborX, neighborY, this.cells[neighborX][neighborY]);
-    /*
-    if (neighborX < 0 || this.cells[0].length >= neighborX) ||
-    */
+    if ((0 <= neighborX && neighborX < this.cells.length) &&
+        (0 <= neighborY && neighborY < this.cells[0].length)) {
+      callback.call(thisArg, neighborX, neighborY, this.cells[neighborX][neighborY]);
+    }
   }, this);
 }
 
