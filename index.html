@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <script type="text/javascript" src="script.js"></script>
+    <script type="text/javascript" src="grid.js"></script>
+    <script type="text/javascript" src="grid_renderer.js"></script>
+    <script type="text/javascript" src="game.js"></script>
     <script type="text/javascript">
-      var grid = createEmptyGrid(10, 10)
-      //addToGrid(grid, [[1,1], [2,1], [3,1], [2,2]]);
-      seedGrid(grid);
-      console.log(renderGrid(grid));
+      var renderer = new GridRenderer();
+
+      var grid = new Grid(10, 10);
+      grid.seed();
+
+      game = new Game(grid);
+      console.log(renderer.renderGrid(game.getGrid()));
+
       function step() {
-        grid = nextGrid(grid);
-        console.log(renderGrid(grid));
+        game.step();
+        console.log(renderer.renderGrid(game.getGrid()));
       }
     </script>
   </body>

@@ -58,11 +58,35 @@ describe("Game", function() {
     })
   });
 
-  /*
   describe("#step", function() {
+    function gridToArray(grid) {
+      var arr = [];
+      grid.eachCell(function(x, y, state) {
+        arr.push(state);
+      });
+      return arr;
+    }
+
     it("should evolve the game", function() {
       
+      // .X..
+      // XXX.
+      // ....
+      // ....
+      var grid = new Grid(4,4);
+      grid.addCells([[1,0], [0,1], [1,1], [2,1]]);
+
+      // XXX.
+      // XXX.
+      // .X..
+      // ....
+      var expectedGrid = new Grid(4, 4);
+      expectedGrid.addCells([[0,0],[1,0],[2,0],[0,1],[1,1],[1,2],[2,1]]);
+
+      var game = new Game(grid);
+      game.step();
+
+      assert.deepEqual(gridToArray(expectedGrid), gridToArray(game.getGrid()))
     });
   });
-  */
 });

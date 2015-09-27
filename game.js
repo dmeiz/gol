@@ -26,18 +26,14 @@ Game.prototype.nextCellState = function(current, numNeighbors) {
   return false;
 }
 
+Game.prototype.step = function() {
+  var nextGrid = new Grid(this.grid.width(), this.grid.height());
 
-/*
-grid = new Grid(4, 4);
-renderer = new GridRenderer();
-game = new Game(grid, renderer);
-game.step();
-renderer.renderGrid(game.grid())
+  this.grid.eachCell(function(x, y, state) {
+    if (this.nextCellState(state, this.grid.countNeighbors(x, y))) {
+      nextGrid.addCells([[x, y]]);
+    }
+  }, this);
 
-nextGrid = newGrid(grid.width(), grid.height())
-grid.eachCell(function(x, y, state) {
-  countNeighbors(x, y)
-  if (nextCell(state, neighborCount))
-    nextGrid.addCells([x, y])
-})
-*/
+  this.grid = nextGrid;
+}
