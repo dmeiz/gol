@@ -8,6 +8,22 @@ describe("Grid", function() {
     });
   });
 
+  describe("#width", function() {
+    it("should return the grids width", function() {
+      var grid = new Grid(5, 4);
+
+      assert.equal(5, grid.width());
+    });
+  });
+
+  describe("#height", function() {
+    it("should return the grids height", function() {
+      var grid = new Grid(5, 4);
+
+      assert.equal(4, grid.height());
+    });
+  });
+
   describe("#eachCell()", function() {
     it ("should iterate through each cell in the grid", function() {
       var grid = new Grid(2, 2);

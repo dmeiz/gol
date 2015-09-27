@@ -9,6 +9,14 @@ Grid = function(m, n) {
   }
 }
 
+Grid.prototype.width = function() {
+  return this.cells[0].length
+}
+
+Grid.prototype.height = function() {
+  return this.cells.length
+}
+
 Grid.prototype.eachCell = function(callback, thisArg) {
   for (var y = 0; y < this.cells.length; y++) {
     for (var x = 0; x < this.cells[y].length; x++) {
