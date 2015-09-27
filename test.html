@@ -9,197 +9,20 @@
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.2.5/mocha.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.2.0/chai.js"></script>
-  <script src="script.js"></script>
-  <script>mocha.setup('bdd')</script>
+
+  <script src="grid.js"></script>
+  <script src="grid_renderer.js"></script>
+  <script src="game.js"></script>
 
   <script>
+    mocha.setup('bdd');
     assert = chai.assert;
-
-    describe("#createEmptyGrid", function() {
-      it("should create a nxm grid of false values", function() {
-        var grid = createEmptyGrid(4, 4)
-        for (var x = 0; x < 4; x++) {
-          for (var y = 0; y < 4; y++) {
-            assert.equal(false, grid[x][y], "at position (" + x + "," + y + ")" );
-          }
-        }
-      });
-    });
-
-    describe("#seedGrid", function() {
-      it("should seed the grid randomly per a random factor", function() {
-        var grid = createEmptyGrid(4, 4);
-        seedGrid(grid);
-
-        var liveCount = 0;
-        for (var x = 0; x < 4; x++) {
-          for (var y = 0; y < 4; y++) {
-            if (grid[x][y]) {
-              liveCount++;
-            }
-          }
-        }
-
-        assert(liveCount > 0, "there are some live cells");
-      });
-    });
-
-    describe("#addToGrid()", function() {
-      var grid;
-      before(function() {
-        grid = createEmptyGrid(4, 4);
-      });
-
-      it("should add points to a grid", function() {
-        addToGrid(grid, [[0,0], [2,3]])
-
-        assert.equal(true, grid[0][0]);
-        assert.equal(true, grid[2][3]);
-      });
-    });
-
-    describe("#countNeighbors()", function() {
-      var grid;
-
-      beforeEach(function() {
-        grid = createEmptyGrid(4, 4);
-      });
-
-      it("should count neighbors to the top-left", function() {
-        addToGrid(grid, [[0,0]]);
-        assert.equal(1, countNeighbors(grid, 1, 1));
-      });
-
-      it("should not count neighbors to the top-left from the top-left corner", function() {
-        assert.equal(0, countNeighbors(grid, 0, 0));
-      });
-
-      it("should count neighbors to the top", function() {
-        addToGrid(grid, [[1,0]]);
-        assert.equal(1, countNeighbors(grid, 1, 1));
-      });
-
-      it("should not count neighbors to the top from the top-center edge", function() {
-        assert.equal(0, countNeighbors(grid, 1, 0));
-      });
-
-      it("should count neighbors to the top-right", function() {
-        addToGrid(grid, [[1,0]]);
-        assert.equal(1, countNeighbors(grid, 0, 1));
-      });
-
-      it("should not count neighbors to the top-right from the top-right corner", function() {
-        assert.equal(0, countNeighbors(grid, 3, 0));
-      });
-
-
-      it("should count neighbors to the bottom-left", function() {
-        addToGrid(grid, [[0,1]]);
-        assert.equal(1, countNeighbors(grid, 1, 0));
-      });
-
-      it("should not count neighbors to the bottom-left from the bottom-left corner", function() {
-        assert.equal(0, countNeighbors(grid, 0, 3));
-      });
-
-      it("should count neighbors to the bottom", function() {
-        addToGrid(grid, [[1,1]]);
-        assert.equal(1, countNeighbors(grid, 1, 0));
-      });
-
-      it("should not count neighbors to the bottom from the bottom-center edge", function() {
-        assert.equal(0, countNeighbors(grid, 0, 3));
-      });
-
-      it("should count neighbors to the bottom-right", function() {
-        addToGrid(grid, [[1,1]]);
-        assert.equal(1, countNeighbors(grid, 0, 0));
-      });
-
-      it("should not count neighbors to the bottom-right from the bottom-right corner", function() {
-        assert.equal(0, countNeighbors(grid, 3, 3));
-      });
-
-      it("should count neighbors to the left", function() {
-        addToGrid(grid, [[0,0]]);
-        assert.equal(1, countNeighbors(grid, 1, 0));
-      });
-
-      it("should not count neighbors to the left from the left edge", function() {
-        assert.equal(0, countNeighbors(grid, 0, 0));
-      });
-
-      it("should count neighbors to the right", function() {
-        addToGrid(grid, [[1,0]]);
-        assert.equal(1, countNeighbors(grid, 0, 0));
-      });
-
-      it("should not count neighbors to the right from the right edge", function() {
-        assert.equal(0, countNeighbors(grid, 3, 0));
-      });
-
-      it("should work", function() {
-        addToGrid(grid, [[1,1], [2,1], [0,2], [1,3], [2,3]]);
-        assert.equal(5, countNeighbors(grid, 1, 2));
-      });
-    });
-
-    describe("#renderGrid()", function() {
-      it("should render the grid", function() {
-        var grid = createEmptyGrid(4, 4);
-        addToGrid(grid, [[1,0]]);
-        assert.equal(".X..\n....\n....\n....\n", renderGrid(grid));
-      });
-    });
-
-    describe("#nextCellState()", function() {
-      it("should handle under-population", function() {
-        assert.equal(false, nextCellState(true, 0));
-        assert.equal(false, nextCellState(true, 1));
-      })
-
-      it("should handle survival", function() {
-        assert.equal(true, nextCellState(true, 2));
-        assert.equal(true, nextCellState(true, 3));
-      })
-
-      it("should handle over-population", function() {
-        assert.equal(false, nextCellState(true, 4));
-        assert.equal(false, nextCellState(true, 5));
-        assert.equal(false, nextCellState(true, 6));
-        assert.equal(false, nextCellState(true, 7));
-        assert.equal(false, nextCellState(true, 8));
-      })
-
-      it("should handle reproduction", function() {
-        assert.equal(true, nextCellState(false, 3));
-      })
-
-      it("should handle everything else", function() {
-        assert.equal(false, nextCellState(false, 0));
-        assert.equal(false, nextCellState(false, 1));
-        assert.equal(false, nextCellState(false, 2));
-        assert.equal(false, nextCellState(false, 4));
-        assert.equal(false, nextCellState(false, 5));
-        assert.equal(false, nextCellState(false, 6));
-        assert.equal(false, nextCellState(false, 7));
-        assert.equal(false, nextCellState(false, 8));
-      })
-    });
-
-    describe("#nextGrid()", function() {
-      it("should compute the next grid state", function() {
-        var grid = createEmptyGrid(4, 4);
-        addToGrid(grid, [[0,0], [1,0], [2,0]]);
-        var newGrid = nextGrid(grid);
-        assert.equal(true, newGrid[1][1]);
-      });
-    });
   </script>
-
+  <script src="grid_test.js"></script>
+  <script src="grid_renderer_test.js"></script>
+  <script src="game_test.js"></script>
   <script>
     mocha.checkLeaks();
-  //  mocha.globals(['jQuery']);
     mocha.run();
   </script>
 </body>
