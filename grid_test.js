@@ -188,4 +188,13 @@ describe("Grid", function() {
     });
   });
 
+  describe("#countNeighbors", function() {
+    it("should count a cells neighbors", function() {
+      var grid = new Grid(4, 4);
+      grid.addCells([[1,0], [1,1]]);
+
+      assert.equal(2, grid.countNeighbors(0, 0));
+    });
+  });
+
 });

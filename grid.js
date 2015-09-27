@@ -55,3 +55,11 @@ Grid.prototype.addCells = function(cells) {
     this.cells[cell[0]][cell[1]] = true;
   }, this);
 }
+
+Grid.prototype.countNeighbors = function(x, y) {
+  var total = 0;
+  this.eachNeighbor(x, y, function(x, y, state) {
+    if (state) { total++; }
+  });
+  return total;
+}
