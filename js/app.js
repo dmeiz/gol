@@ -7,7 +7,7 @@ var renderer = new GridRenderer();
 var grid = new Grid(10, 10);
 grid.seed();
 
-game = new Game(grid);
+var game = new Game(grid);
 console.log(renderer.renderGrid(game.getGrid()));
 
 step = function() {
