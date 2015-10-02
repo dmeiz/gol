@@ -1,3 +1,5 @@
+define(function() {
+
 Game = function(grid) {
   this.grid = grid;
 }
@@ -37,3 +39,6 @@ Game.prototype.step = function() {
 
   this.grid = nextGrid;
 }
+  
+return Game;
+});

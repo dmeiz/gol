@@ -1,3 +1,5 @@
+define(function() {
+
 GridRenderer = function() {
 }
 
@@ -14,3 +16,6 @@ GridRenderer.prototype.renderGrid = function(grid) {
 
   return text.join('');
 }
+
+return GridRenderer;
+});
