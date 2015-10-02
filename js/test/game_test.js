@@ -1,3 +1,5 @@
+define(["app/game"], function(Game) {
+
 describe("Game", function() {
   describe("#new", function() {
     it("should accept a grid", function() {
@@ -89,4 +91,6 @@ describe("Game", function() {
       assert.deepEqual(gridToArray(expectedGrid), gridToArray(game.getGrid()))
     });
   });
+});
+  
 });

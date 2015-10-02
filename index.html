@@ -1,22 +1,6 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <script type="text/javascript" src="grid.js"></script>
-    <script type="text/javascript" src="grid_renderer.js"></script>
-    <script type="text/javascript" src="game.js"></script>
-    <script type="text/javascript">
-      var renderer = new GridRenderer();
-
-      var grid = new Grid(10, 10);
-      grid.seed();
-
-      game = new Game(grid);
-      console.log(renderer.renderGrid(game.getGrid()));
-
-      function step() {
-        game.step();
-        console.log(renderer.renderGrid(game.getGrid()));
-      }
-    </script>
+    <script type="text/javascript" data-main="js/app.js" src="js/require.js"></script>
   </body>
 </html>

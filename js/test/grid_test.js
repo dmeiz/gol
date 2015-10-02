@@ -1,3 +1,5 @@
+define(["app/grid"], function(Grid) {
+
 describe("Grid", function() {
   describe("#new", function() {
     it("should create a MxN grid of false values", function() {
@@ -196,5 +198,7 @@ describe("Grid", function() {
       assert.equal(2, grid.countNeighbors(0, 0));
     });
   });
+
+});
 
 });

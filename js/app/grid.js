@@ -1,3 +1,5 @@
+define(function() {
+
 Grid = function(m, n) {
   this.cells = new Array(n);
 
@@ -63,3 +65,6 @@ Grid.prototype.countNeighbors = function(x, y) {
   });
   return total;
 }
+
+return Grid;
+});
