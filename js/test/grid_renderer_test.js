@@ -1,3 +1,5 @@
+define(["app/grid_renderer"], function(GridRenderer) {
+
 describe("GridRenderer", function() {
   describe("#renderGrid", function() {
     it("should render a grid", function() {
@@ -9,4 +11,6 @@ describe("GridRenderer", function() {
       assert.equal(".X..\n....\n....\n....\n", renderer.renderGrid(grid));
     });
   });
+});
+
 });
