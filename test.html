@@ -3,7 +3,18 @@
     <meta charset="utf-8">
     <title>GOL Tests</title>
     <link href="https://cdn.rawgit.com/mochajs/mocha/2.2.5/mocha.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/lib/mocha.js"></script>
+    <script type="text/javascript" src="js/lib/chai.js"></script>
     <script type="text/javascript" data-main="js/test" src="js/require.js"></script>
+    <script>
+      mocha.setup('bdd');
+      assert = chai.assert;
+      require.config({ baseUrl: "js" });
+      require(["test"], function() {
+        mocha.checkLeaks();
+        mocha.run();
+      });
+    </script>
   </head>
   <body>
     <div id="mocha"></div>

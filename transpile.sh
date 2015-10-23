@@ -5,3 +5,4 @@ babel --modules amd es6/test/grid_test.es6 > js/test/grid_renderer_test.js
 babel --modules amd es6/test/grid_renderer_test.es6 > js/test/grid_renderer_test.js
 babel --modules amd es6/test/game_test.es6 > js/test/game_test.js
 babel --modules amd es6/app.es6 > js/app.js
+babel --modules amd es6/test.es6 > js/test.js
