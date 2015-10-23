@@ -1,4 +1,4 @@
-define(["app/game"], function(Game) {
+define(["app/game", "app/grid"], function(Game, Grid) {
 
 describe("Game", function() {
   describe("#new", function() {

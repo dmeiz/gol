@@ -1,4 +1,5 @@
 import GridRenderer from 'app/grid_renderer'
+import Grid from 'app/grid'
 
 describe("GridRenderer", function() {
   describe("#renderGrid", function() {

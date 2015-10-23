@@ -1,4 +1,4 @@
-define(function() {
+define(["app/grid"], function(Grid) {
 
 Game = function(grid) {
   this.grid = grid;
