@@ -1,16 +1,23 @@
-define(["app/grid_renderer"], function(GridRenderer) {
+define(['exports', 'app/grid_renderer', 'app/grid'], function (exports, _appGrid_renderer, _appGrid) {
+  'use strict';
 
-describe("GridRenderer", function() {
-  describe("#renderGrid", function() {
-    it("should render a grid", function() {
-      var grid = new Grid(4, 4);
-      grid.addCells([[1,0]]);
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-      var renderer = new GridRenderer();
+  var _GridRenderer = _interopRequireDefault(_appGrid_renderer);
 
-      assert.equal(".X..\n....\n....\n....\n", renderer.renderGrid(grid));
+  var _Grid = _interopRequireDefault(_appGrid);
+
+  describe("GridRenderer", function () {
+    describe("#renderGrid", function () {
+      it("should render a grid", function () {
+        var grid = new _Grid['default'](4, 4);
+        grid.addCells([[1, 0]]);
+
+        var renderer = new _GridRenderer['default']();
+
+        assert.equal(".X..\n....\n....\n....\n", renderer.renderGrid(grid));
+      });
     });
   });
 });
 
-});
